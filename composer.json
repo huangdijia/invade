@@ -19,7 +19,7 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.9",
-        "pestphp/pest": "^2.0",
+        "pestphp/pest": "^1.0|^2.0",
         "phpstan/phpstan": "^1.4"
     },
     "autoload": {
