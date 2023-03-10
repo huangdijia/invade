@@ -36,10 +36,10 @@
         }
     },
     "scripts": {
-        "analyse": "phpstan analyse --memory-limit 512M -l 0 -c phpstan.neon ./src",
-        "test": "vendor/bin/pest",
-        "test-coverage": "vendor/bin/pest --coverage",
-        "cs-fix": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+        "analyse": "@php phpstan analyse --memory-limit 512M -l 0 -c phpstan.neon ./src",
+        "test": "@php vendor/bin/pest",
+        "test-coverage": "@php vendor/bin/pest --coverage",
+        "cs-fix": "@php vendor/bin/php-cs-fixer fix --allow-risky=yes"
     },
     "config": {
         "sort-packages": true,
