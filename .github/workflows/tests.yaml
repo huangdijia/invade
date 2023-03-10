@@ -2,6 +2,9 @@ name: tests
 
 on: [push, pull_request]
 
+env:
+  PHP_CS_FIXER_IGNORE_ENV: 1
+
 jobs:
   ci:
     name: Test on PHP ${{ matrix.php-version }}
