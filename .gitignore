@@ -5,7 +5,6 @@
 build
 composer.lock
 coverage
-phpunit.xml
 vendor
 .php-cs-fixer.cache
 
