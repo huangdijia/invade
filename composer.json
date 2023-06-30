@@ -24,7 +24,6 @@
     },
     "autoload": {
         "psr-4": {
-            "Huangdijia\\Invade\\": "src"
         },
         "files": [
             "src/Functions.php"
@@ -32,13 +31,12 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Huangdijia\\Invade\\Tests\\": "tests"
         }
     },
     "scripts": {
-        "analyse": "@php phpstan analyse --memory-limit 512M -l 0 -c phpstan.neon ./src",
+        "analyse": "@php phpstan analyse --memory-limit 512M -l 0 -c phpstan.neon ",
         "test": "@php vendor/bin/pest",
-        "test-coverage": "@php vendor/bin/pest --coverage",
+        "test-coverage": "@php vendor/bin/pest",
         "cs-fix": "@php vendor/bin/php-cs-fixer fix --allow-risky=yes"
     },
     "config": {
