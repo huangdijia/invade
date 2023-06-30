@@ -12,7 +12,7 @@ This package offers an `invade` function that will allow you to read/write priva
 
 You can install the package via composer:
 
-```bash
+```shell
 composer require huangdijia/invade
 ```
 
@@ -21,6 +21,9 @@ composer require huangdijia/invade
 Imagine you have this class defined which has a private property and method.
 
 ```php
+<?php
+use function Huangdijia\Invade\invade;
+
 class MyClass
 {
     private string $privateProperty = 'private value';
@@ -37,12 +40,16 @@ $myClass = new MyClass();
 This is how you can get the value of the private property using the `invade` function.
 
 ```php
+use function Huangdijia\Invade\invade;
+
 invade($myClass)->privateProperty; // returns 'private value'
 ```
 
 The `invade` function also allows you to change private values.
 
 ```php
+use function Huangdijia\Invade\invade;
+
 invade($myClass)->privateProperty = 'changed value';
 invade($myClass)->privateProperty; // returns 'changed value
 ```
@@ -50,6 +57,8 @@ invade($myClass)->privateProperty; // returns 'changed value
 Using `invade` you can also call private functions.
 
 ```php
+use function Huangdijia\Invade\invade;
+
 invade($myClass)->privateMethod(); // returns 'private return value'
 ```
 

@@ -5,10 +5,13 @@ declare(strict_types=1);
  * This file is part of huangdijia/invade.
  *
  * @link     https://github.com/huangdijia/invade
- * @contact  huangdijia@gmail.com
+ * @document https://github.com/huangdijia/php-coding-standard/blob/main/README.md
+ * @contact  Deeka Wong <huangdijia@gmail.com>
  */
+use function Huangdijia\Invade\invade;
+
 beforeEach(function () {
-    $this->class = new class() {
+    $this->obj = new class() {
         private string $privateProperty = 'privateValue';
 
         private function privateMethod(): string
@@ -19,21 +22,21 @@ beforeEach(function () {
 });
 
 it('can read a private property of an object', function () {
-    $privateValue = invade($this->class)->privateProperty;
+    $privateValue = invade($this->obj)->privateProperty;
 
     expect($privateValue)->toBe('privateValue');
 });
 
 it('can set the private property of an object', function () {
-    invade($this->class)->privateProperty = 'changedValue';
+    invade($this->obj)->privateProperty = 'changedValue';
 
-    $privateValue = invade($this->class)->privateProperty;
+    $privateValue = invade($this->obj)->privateProperty;
 
     expect($privateValue)->toBe('changedValue');
 });
 
 it('can call the private method of an object', function () {
-    $returnValue = invade($this->class)->privateMethod();
+    $returnValue = invade($this->obj)->privateMethod();
 
     expect($returnValue)->toBe('private return value');
 });

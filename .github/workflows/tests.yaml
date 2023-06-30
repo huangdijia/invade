@@ -12,8 +12,8 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        php-version: ['8.0', '8.1', '8.2']
-      max-parallel: 4
+        php-version: ['8.1', '8.2']
+      max-parallel: 32
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -21,15 +21,17 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
-          extensions: redis, pdo, pdo_mysql, bcmath, swoole
+          # extensions: redis, pdo, pdo_mysql, bcmath, swoole
           tools: phpize
           coverage: none
-      - name: Setup Packages
+      - name: Setup Dependencies
         run: composer update -o
+      - name: Run Cs Fixer
+        run: |
+          vendor/bin/php-cs-fixer fix src --dry-run
       - name: Run Analyse
         run: |
           composer analyse src
       - name: Run Test Cases
         run: |
-          vendor/bin/php-cs-fixer fix src --dry-run
           composer test
