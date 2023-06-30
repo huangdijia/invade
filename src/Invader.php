@@ -15,29 +15,40 @@ namespace Huangdijia\Invade;
  */
 class Invader
 {
-    /** @var T */
-    public object $obj;
+    private $get;
+
+    private $set;
+
+    private $call;
 
     /**
      * @param T $obj
      */
     public function __construct(object $obj)
     {
-        $this->obj = $obj;
+        $this->get = (
+            function ($name) { return $this->{$name}; }
+        )->bindTo($obj, $obj);
+        $this->set = (
+            function ($name, $value) { $this->{$name} = $value; }
+        )->bindTo($obj, $obj);
+        $this->call = (
+            function ($name, $params) { return $this->{$name}(...$params); }
+        )->bindTo($obj, $obj);
     }
 
     public function __get(string $name): mixed
     {
-        return (fn () => $this->{$name})->call($this->obj);
+        return ($this->get)($name);
     }
 
     public function __set(string $name, mixed $value): void
     {
-        (fn () => $this->{$name} = $value)->call($this->obj);
+        ($this->set)($name, $value);
     }
 
     public function __call(string $name, array $params = []): mixed
     {
-        return (fn () => $this->{$name}(...$params))->call($this->obj);
+        return ($this->call)($name, $params);
     }
 }
