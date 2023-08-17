@@ -8,6 +8,7 @@ declare(strict_types=1);
  * @document https://github.com/huangdijia/invade/blob/main/README.md
  * @contact  Deeka Wong <huangdijia@gmail.com>
  */
+
 namespace Huangdijia\Invade;
 
 if (! function_exists('invade')) {
