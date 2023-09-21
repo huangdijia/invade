@@ -16,7 +16,7 @@ if (! function_exists('invade')) {
      * @template T of object
      *
      * @param T $object
-     * @return Invader<T>
+     * @return T
      */
     function invade(object $object): object
     {
